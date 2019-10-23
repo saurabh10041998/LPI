@@ -7,8 +7,8 @@
 
 usage
 ----
-''' 
+<code>
     javac solver.py
     java solver.
         
-'''
+</code>
