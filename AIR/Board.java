@@ -14,7 +14,7 @@ public class Board {
                 board[i * N + j] = blocks[i][j];
             }
         }
-
+        
     }
 
     private Board(int [] board) {
@@ -48,8 +48,8 @@ public class Board {
 
     private int manhattan(int goal, int current) {
         int row, cols;          // row col count
-        row = Math.abs((goal - 1)/N - (current - 1)/ N);     //misplaced row count
-        cols = Math.abs((goal - 1) % N - (current - 1) % N);  // misplaced  col count
+        row = Math.abs((goal - 1)/N - (current)/ N);     //misplaced row count
+        cols = Math.abs((goal - 1) % N - (current) % N);  // misplaced  col count
         return row + cols;
     }
 
@@ -100,24 +100,24 @@ public class Board {
 
         if((index / N) != 0) {          // if not first row
                 neighbor = new Board(board);
-                exch(neighbor, index, index - N); //exchange it with upper row
+                neighbor = exch(neighbor, index, index - N); //exchange it with upper row
                 q.add(neighbor);
         }
 
         if((index / N) != ( N - 1 )) {  // if not last row
             neighbor = new Board(board);
-            exch(neighbor, index, index + N);      //exchange it withlower row
+            neighbor = exch(neighbor, index, index + N);      //exchange it withlower row
             q.add(neighbor);
         }
 
         if((index % N) != 0) {         // if not the left column
             neighbor = new Board(board);
-            exch(neighbor, index, index - 1);   //exchange it left column
+            neighbor = exch(neighbor, index, index - 1);   //exchange it left column
             q.add(neighbor);
         }
         if((index % N) != (N-1)) {      // if not rightmost column
             neighbor = new Board(board);
-            exch(neighbor, index, index + 1);   //exchange it with right column
+            neighbor = exch(neighbor, index, index + 1);   //exchange it with right column
             q.add(neighbor);
         }
         return q;
@@ -131,9 +131,9 @@ public class Board {
         s.append(N + "\n");
 
         for(int i = 0; i < board.length; i++) {
-            s.append(String.format("%2d", board[i]));
-            if(i % N == 0)
+            if(i % N == 0 && i != 0)
                 s.append("\n");
+            s.append(String.format("%2d", board[i]));            
         }
         return s.toString();
 
