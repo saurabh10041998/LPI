@@ -20,4 +20,5 @@ def splitDataset(dataset, splitRatio):
         trainSet.append(copy.pop(index))
     return [trainSet, copy]
 
-
+def seperateByClass(dataset):
+    
